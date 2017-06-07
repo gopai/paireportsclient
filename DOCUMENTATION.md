@@ -19,6 +19,8 @@
                                             <p>F_Column name=Column filter&ED_Column name=true</p> 
 <p>•	The visibility can be set to either true or false which displays or hides the column respectively.</p> 
 <p>•	An example URL could be</p>  
-                     <p>GetNewUserReport.event?ReportCmd=Filter&F_City=Billings&ED_City=false</p> 
+                     <p>GetNewUserReport.event?ReportCmd=Filter&F_City=Billings&ED_City=false</p>
+                     
+<p>•  ReportCmd=Filter indicates that the command to be performed on the report is a filter.</p>
 
 ![alt text](https://github.com/gopai/paireportsclient/blob/master/client-server%20diagram.png)
