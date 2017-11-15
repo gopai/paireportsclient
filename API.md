@@ -7,9 +7,25 @@ This is a sample application that demonstrates interfacing with paireports.com t
 The API is based on standard HTTP practices and primarily uses key-value pairs for passing filters, sort orders, and report selection. The documentation below describes the available commands.
 </p>
 
-
-
 ## API Documentation
+The example application has a demonstration of how to login and establish a session with PAI Reports. This documenation will not go into those details.
+
+After a session has established retrieving data requires four peices of data. 
+ * Report Path (ex. `/GetNewUserReport.event`)
+ * predefined configuration identifier, if desired (ex. `ReportGUID=14E0CB59-CE95-E411-8519-D4AE52896C05`)
+ * data format of the result (ex. `CustomCommand&CustomCmdList=DownloadCSV` to download as CSV format)
+ * filters and sort orders that you desire for this run. (`F_Username=Bill`)
+
+### Configuration
+Configurations can be transmitted either by URL or in the data segment of an HTTP POST request. Requests must be formatted in key-value pairs using `x-www-form-urlencoded` encoding. URL Encoding must be used with configurations passed both the URL and the data segment. Reports will answer to both GET or POST requests, but POST requests are recommended to prevent caching.  
+
+### Report Path
+Report within PAI Reports can be accessed directly by URL. For example, if you access `https://www.paireports.com/myreports/GetNewUserReport.event` you be be presented with the users report if you have a valid session. PAI Reports requires the use of a secure connection. Make sure that you don't forget to establish your connection using HTTPS. 
+
+### Predefined Configuration
+PAI Reports allows the report to be configurated in many ways including the order of the column, predefined filters, and sort orders. Creating these configurations can be done through the standard user interface within PAI Reports. Programmatically creating these configurations is not discussed in this document. The data can be retrieved using the predefined configuration by passing the configuration like so `ReportGUID=14E0CB59-CE95-E411-8519-D4AE52896C05`. The key `ReportGUID` instructs the Report API to select the configuration defined by the GUID value. In the example above the report GUID is `14E0CB59-CE95-E411-8519-D4AE52896C05`. Currently, the only way to find these configuration ids is to use an inspection tool within a web browser and looking at the source of the dropdown on the report screen. This may change in the future with an inclusion of the GUID within the configuration screen.
+
+
 <p>•	The API allows you to filter reports using key-value pairs. The format for filters is</p>
                                              <p>F_Column name=Column filter</p>
 <p>•	We can see that there are two attributes of the column in the above line, column name and column filter. The column name, as the name suggests, is the name of the column and is the key portion of the filter statement. The column filter identifies a particular aspect of the key that we would like to focus on, and by this association, the column filter is the value of the key.</p>
