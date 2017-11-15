@@ -37,11 +37,13 @@ PAI Reports currently only supports CSV, XML, and HTML response formats.
  * HTML default configuration
 
 ### Filters
-<p>The API allows you to filter reports using key-value pairs. The format for filters is</p>
+The API allows you to filter reports using key-value pairs. The format for filters is
+ 
 `F_[Column name]=[Column filter]`
-<p>We can see that there are two attributes for a column in the above line: Column Name and Column Filter. The Column Name, as the name suggests, is the name of the column and is the key portion of the filter statement. The Column Filter will be applied as a filter to that column and is the value of the key.</p>
 
-<p>The F_ indicates that this is a filter for a column. An example would be a Column Name of “City” with a Column Filter of “Billings” (e.g. F_City=Billings). In this case, the F_ would indicate that in the “City” column, we want results that contain the text "Billings."</p>
+We can see that there are two attributes for a column in the above line: Column Name and Column Filter. The Column Name, as the name suggests, is the name of the column and is the key portion of the filter statement. The Column Filter will be applied as a filter to that column and is the value of the key.
+
+The F_ indicates that this is a filter for a column. An example would be a Column Name of “City” with a Column Filter of “Billings” (e.g. `F_City=Billings`). In this case, the F_ would indicate that in the “City” column, we want results that contain the text "Billings."
 
 ### Visibility
 We can take this a step further by adding visibility to columns. Visibility simply lets us show, or hide, a given column and can be set to either true or false. Setting the visibility to true shows the column and populates the filter if applicable. Assigning it a value of false removes the column from the report. The format for visibility is
@@ -50,7 +52,8 @@ We can take this a step further by adding visibility to columns. Visibility simp
 
 `E_` indicates to the Report API that the key indicates which column will have its visibility adjusted. The visibility will be adjusted by the value. The value can either be `true` or `false`. False indicates that the column should not be included and true indicates that the column should be shown. Filters will still apply even if the column is not shown.
 
-<p>The following example will filter the report by narrowing to only usernames that contain the text 'bill' and will not include the column Username in the final result.</p>
+The following example will filter the report by narrowing to only usernames that contain the text 'bill' and will not include the column Username in the final result.
+
 `F_Username=bill&E_Username=false`
 
 ### Putting it all together
