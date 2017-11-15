@@ -1,4 +1,13 @@
-# paireportsclient
+# Example Client for PAI Reports Report API
+
+<p>
+This is a sample application that demonstrates interfacing with paireports.com to receive data. Using the Report API provided by PAI you can build processes that will extract data based on the criteria that you desire. 
+</p>
+<p>
+The API is based on standard HTTP practices and primarily uses key-value pairs for passing filters, sort orders, and report selection. The documentation below describes the available commands.
+</p>
+
+
 
 ## API Documentation
 <p>•	The API allows you to filter reports using key-value pairs. The format for filters is</p>
