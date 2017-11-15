@@ -44,9 +44,12 @@ PAI Reports currently only supports CSV, XML, and HTML response formats.
 <p>The F_ indicates that this is a filter for a column. An example would be a Column Name of “City” with a Column Filter of “Billings” (e.g. F_City=Billings). In this case, the F_ would indicate that in the “City” column, we want results that contain the text "Billings."</p>
 
 ### Visibility
-<p> We can take this a step further by adding visibility to columns. Visibility simply lets us show, or hide, a given column and can be set to either true or false. Setting the visibility to true shows the column and populates the filter if applicable. Assigning it a value of false removes the column from the report. The format for visibility is</p>
+We can take this a step further by adding visibility to columns. Visibility simply lets us show, or hide, a given column and can be set to either true or false. Setting the visibility to true shows the column and populates the filter if applicable. Assigning it a value of false removes the column from the report. The format for visibility is
+
 `E_[Column Name]=[true|false]`
-<p>`E_` indicates to the Report API that the key indicates which column will have its visibility adjusted. The visibility will be adjusted by the value. The value can either be `true` or `false`. False indicates that the column should not be included and true indicates that the column should be shown. Filters will still apply even if the column is not shown.</p> 
+
+`E_` indicates to the Report API that the key indicates which column will have its visibility adjusted. The visibility will be adjusted by the value. The value can either be `true` or `false`. False indicates that the column should not be included and true indicates that the column should be shown. Filters will still apply even if the column is not shown.
+
 <p>The following example will filter the report by narrowing to only usernames that contain the text 'bill' and will not include the column Username in the final result.</p>
 `F_Username=bill&E_Username=false`
 
