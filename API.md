@@ -32,7 +32,7 @@ PAI Reports allows reports to be configured in many ways. This includes the colu
 
 ### Data Format
 PAI Reports currently only supports CSV, XML, and HTML response formats.
- * CSV response format: `CustomCommand&CustomCmdList=DownloadCSV`
+ * CSV response format: `ReportCmd=CustomCommand&CustomCmdList=DownloadCSV`
  * XML response format: `RenderType=xml`
  * HTML default configuration
 
@@ -50,6 +50,22 @@ PAI Reports currently only supports CSV, XML, and HTML response formats.
 <p>The following example will filter the report by narrowing to only usernames that contain the text 'bill' and will not include the column Username in the final result.</p>
 `F_Username=bill&E_Username=false`
 
+### Putting it all together
+A full request to the Report API will look like:
+
+```
+POST /myreports/GetNewUserReport.event HTTP/1.1
+Host: paireports.com
+Content-Type: application/x-www-form-urlencoded
+Cookie: JSESSIONID=94F35B89002804BE569C3D1A2A12BC95.IoI;
+User-Agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36
+Content-Length: 89
+
+ReportCmd=Filter&CustomCommand&CustomCmdList=DownloadCSV&F_Username=bill&E_Username=false
+```
+
+This will issue a request to the Report API to retrieve the Users Report filtering by usernames that are like bill and disabling the username column. It will use the default report configuration as no ReportGUID was selected and it will return the content in CSV format.
+
 ## Login Process
 The login process requires an HTTP POST request. Several headers are required including `User-Agent`, `Content-Type`, and a `Method` of `POST`.
 ```
@@ -64,7 +80,7 @@ con.setRequestMethod("POST");
 ```
 What is required for further requests is a `JSESSIONID`. This token represents your session with PAI Reports and is required for all communications. This parameter is communicated to the server using the Cookie header. The JSESSIONID can be obtained through Cookie management and will also be returned by the Login event on successful login.
 ```
-con.setRequestProperty("Cookie", "94F35B89002804BE569C3D1A2A12BC95.IoI;");
+con.setRequestProperty("Cookie", "JSESSIONID=94F35B89002804BE569C3D1A2A12BC95.IoI;");
 ```
 The login  event ```Login.event``` requires `Username` and `Password`. These two fields must be transmitted in `application/x-www-form-urlencoded` format.
 
