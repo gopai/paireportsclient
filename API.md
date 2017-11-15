@@ -1,11 +1,9 @@
 # Example Client for PAI Reports Report API
 
-<p>
 This is a sample application that demonstrates interfacing with paireports.com to receive data. Using the Report API provided by PAI, you can build processes that will extract data based on the criteria that you provide. 
-</p>
-<p>
+
 This API is based on standard HTTP practices and primarily uses key-value pairs for passing filters, sort orders, and report selections. The documentation below describes the available commands.
-</p>
+
 
 ## API Documentation
 The example application is a demonstration of how to login and establish a session with PAI Reports. This documenation will not go into those details.
@@ -43,7 +41,7 @@ The API allows you to filter reports using key-value pairs. The format for filte
 
 We can see that there are two attributes for a column in the above line: Column Name and Column Filter. The Column Name, as the name suggests, is the name of the column and is the key portion of the filter statement. The Column Filter will be applied as a filter to that column and is the value of the key.
 
-The F_ indicates that this is a filter for a column. An example would be a Column Name of “City” with a Column Filter of “Billings” (e.g. `F_City=Billings`). In this case, the F_ would indicate that in the “City” column, we want results that contain the text "Billings."
+The `F_` indicates that this is a filter for a column. An example would be a Column Name of “City” with a Column Filter of “Billings” (e.g. `F_City=Billings`). In this case, the F_ would indicate that in the “City” column, we want results that contain the text "Billings."
 
 ### Visibility
 We can take this a step further by adding visibility to columns. Visibility simply lets us show, or hide, a given column and can be set to either true or false. Setting the visibility to true shows the column and populates the filter if applicable. Assigning it a value of false removes the column from the report. The format for visibility is
