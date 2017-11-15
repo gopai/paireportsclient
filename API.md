@@ -25,10 +25,17 @@ Report within PAI Reports can be accessed directly by URL. For example, if you a
 ### Predefined Configuration
 PAI Reports allows the report to be configurated in many ways including the order of the column, predefined filters, and sort orders. Creating these configurations can be done through the standard user interface within PAI Reports. Programmatically creating these configurations is not discussed in this document. The data can be retrieved using the predefined configuration by passing the configuration like so `ReportGUID=14E0CB59-CE95-E411-8519-D4AE52896C05`. The key `ReportGUID` instructs the Report API to select the configuration defined by the GUID value. In the example above the report GUID is `14E0CB59-CE95-E411-8519-D4AE52896C05`. Currently, the only way to find these configuration ids is to use an inspection tool within a web browser and looking at the source of the dropdown on the report screen. This may change in the future with an inclusion of the GUID within the configuration screen.
 
+### Data Format
+PAI Reports currently only supports CSV, XML, and HTML response formats.
+ * CSV response format: `CustomCommand&CustomCmdList=DownloadCSV`
+ * XML response format: `RenderType=xml`
+ * HTML default configuration
 
-<p>•	The API allows you to filter reports using key-value pairs. The format for filters is</p>
-                                             <p>F_Column name=Column filter</p>
-<p>•	We can see that there are two attributes of the column in the above line, column name and column filter. The column name, as the name suggests, is the name of the column and is the key portion of the filter statement. The column filter identifies a particular aspect of the key that we would like to focus on, and by this association, the column filter is the value of the key.</p>
+### Filters
+<p>	The API allows you to filter reports using key-value pairs. The format for filters is</p>
+   `F_Column name=Column filter`
+<p>We can see that there are two attributes of the column in the above line, column name and column filter. The column name, as the name suggests, is the name of the column and is the key portion of the filter statement. The column filter identifies a particular aspect of the key that we would like to focus on, and by this association, the column filter is the value of the key.</p>
+
 <p>•	The F_ therefore shows the filter being performed on the column. An example would be a column name of “City” with a value of “Billings,” in this case the F_ would indicate that in the “City” column, we want the ones called "Billings."</p>
 <p>•	We can take this a step further by adding visibility to the filters.</p>
 <p>•	Visibility simply lets us show or hide a given filter and can be set to either true or false. Setting the visibility to true populates the filter and assigning it a value of false does not generate it.</p>
