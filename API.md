@@ -12,7 +12,7 @@ After a session has been established, retrieving data requires four pieces of da
  * Report Path (ex. `/GetNewUserReport.event`)
   * Operation
  * predefined configuration identifier, if desired (ex. `ReportGUID=14E0CB59-CE95-E411-8519-D4AE52896C05`)
- * data format of the result (ex. `CustomCommand&CustomCmdList=DownloadCSV` to download as CSV format)
+ * data format of the result (ex. `ReportCmd=CustomCommand&CustomCmdList=DownloadCSV` to download as CSV format)
  * filters and sort orders that you desire for this run. (`F_Username=Bill`)
 
 
@@ -65,7 +65,7 @@ Cookie: JSESSIONID=94F35B89002804BE569C3D1A2A12BC95.IoI;
 User-Agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36
 Content-Length: 89
 
-ReportCmd=Filter&CustomCommand&CustomCmdList=DownloadCSV&F_Username=bill&E_Username=false
+ReportCmd=Filter&ReportCmd=CustomCommand&CustomCmdList=DownloadCSV&F_Username=bill&E_Username=false
 ```
 
 This will issue a request to the Report API to retrieve the Users Report filtering by usernames that are like bill and disabling the username column. It will use the default report configuration as no ReportGUID was selected and it will return the content in CSV format.
