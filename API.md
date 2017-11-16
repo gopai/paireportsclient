@@ -57,7 +57,7 @@ The following example will filter the report by narrowing to only usernames that
 ### Putting it all together
 A full request to the Report API will look like:
 
-```HTTP
+```
 POST /myreports/GetNewUserReport.event HTTP/1.1
 Host: paireports.com
 Content-Type: application/x-www-form-urlencoded
