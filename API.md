@@ -72,7 +72,8 @@ This will issue a request to the Report API to retrieve the Users Report filteri
 
 ## Login Process
 The login process requires an HTTP POST request. Several headers are required including `User-Agent`, `Content-Type`, and a `Method` of `POST`.
-```
+```java
+// Java example showing connection creation for requesting report data
 URL url = new URL(BASE_URL + "Login.event");
 HttpURLConnection con = (HttpURLConnection) url.openConnection();
 con.setRequestProperty("User-Agent", "Mozilla/5.0");
