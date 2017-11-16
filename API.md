@@ -57,7 +57,7 @@ The following example will filter the report by narrowing to only usernames that
 ### Putting it all together
 A full request to the Report API will look like:
 
-```
+```HTTP
 POST /myreports/GetNewUserReport.event HTTP/1.1
 Host: paireports.com
 Content-Type: application/x-www-form-urlencoded
@@ -73,7 +73,7 @@ This will issue a request to the Report API to retrieve the Users Report filteri
 ## Login Process
 The login process requires an HTTP POST request. Several headers are required including `User-Agent`, `Content-Type`, and a `Method` of `POST`.
 ```java
-// Java example showing connection creation for requesting report data
+// Java example showing connection creation for login
 URL url = new URL(BASE_URL + "Login.event");
 HttpURLConnection con = (HttpURLConnection) url.openConnection();
 con.setRequestProperty("User-Agent", "Mozilla/5.0");
@@ -84,7 +84,8 @@ con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; chars
 con.setRequestMethod("POST");
 ```
 What is required for further requests is a `JSESSIONID`. This token represents your session with PAI Reports and is required for all communications. This parameter is communicated to the server using the Cookie header. The JSESSIONID can be obtained through Cookie management and will also be returned by the Login event on successful login.
-```
+```java
+// Java example showing setting the cookie property of a connection
 con.setRequestProperty("Cookie", "JSESSIONID=94F35B89002804BE569C3D1A2A12BC95.IoI;");
 ```
 The login  event ```Login.event``` requires `Username` and `Password`. These two fields must be transmitted in `application/x-www-form-urlencoded` format.
