@@ -71,7 +71,7 @@ ReportCmd=Filter&ReportCmd=CustomCommand&CustomCmdList=DownloadCSV&F_Username=bi
 This will issue a request to the Report API to retrieve the Users Report filtering by usernames that are like bill and disabling the username column. It will use the default report configuration as no ReportGUID was selected and it will return the content in CSV format.
 
 ## Login Process
-The login process requires an HTTP POST request. Several headers are required including `User-Agent`, `Content-Type`, and a `Method` of `POST`.
+The login process requires an HTTP POST request. Several headers are required including `User-Agent`, `Content-Type`, and a `Method` of `POST`. 
 ```java
 // Java example showing connection creation for login
 URL url = new URL(BASE_URL + "Login.event");
@@ -88,7 +88,7 @@ What is required for further requests is a `JSESSIONID`. This token represents y
 // Java example showing setting the cookie property of a connection
 con.setRequestProperty("Cookie", "JSESSIONID=94F35B89002804BE569C3D1A2A12BC95.IoI;");
 ```
-The login  event ```Login.event``` requires `Username` and `Password`. These two fields must be transmitted in `application/x-www-form-urlencoded` format.
+The login event ```Login.event``` requires `Username` and `Password`. These two fields must be transmitted in `application/x-www-form-urlencoded` format. Make sure you match case as all parameters are case sensitive.
 
 <p>Since we use cookies, once a login is performed and authenticated, a session token is provided back to the client from the server. Our API stores this session token in a variable and will be used to identify a specific login occurrence. A representation of this client-server communication is below.</p> 
 
