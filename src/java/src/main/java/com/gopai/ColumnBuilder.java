@@ -1,8 +1,5 @@
 package com.gopai;
 
-/**
- * Created by jemima.nyamogo on 5/24/2017.
- */
 public class ColumnBuilder {
     RequestBuilder rBuilder;
 
@@ -12,25 +9,21 @@ public class ColumnBuilder {
 
     public ColumnBuilder(RequestBuilder builder) {
         this.rBuilder = builder;
-
     }
 
     public ColumnBuilder name(String name) {
         this.name = name;
         return this;
-
     }
 
     public ColumnBuilder filter(String filter) {
         this.filter = filter;
         return this;
-
     }
 
     public ColumnBuilder visible(boolean visibility) {
         this.visibility = visibility;
         return this;
-
     }
 
     public RequestBuilder build() {
@@ -40,5 +33,35 @@ public class ColumnBuilder {
         column.isVisible = visibility;
         rBuilder.getRequest().columns.add(column);
         return rBuilder;
+    }
+
+    public class Column {
+        String name;
+        String filter;
+        boolean isVisible = true;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getFilter() {
+            return filter;
+        }
+
+        public void setFilter(String filter) {
+            this.filter = filter;
+        }
+
+        public boolean isVisible() {
+            return isVisible;
+        }
+
+        public void setVisible(boolean visible) {
+            isVisible = visible;
+        }
     }
 }

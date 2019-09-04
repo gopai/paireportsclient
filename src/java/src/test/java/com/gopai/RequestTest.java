@@ -5,26 +5,23 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-/**
- * Created by jemima.nyamogo on 5/31/2017.
- */
 public class RequestTest {
 
     @Test
     public void given_singlecolumn_with_filter_expect_keyvalue() {
         RequestBuilder rBuilder = new RequestBuilder();
-        Request request = rBuilder
+        RequestBuilder.Request request = rBuilder
                 .column("Username")
                 .name("Username")
                 .filter("name").build()
                 .build();
-        assertThat(request.toString(), is("F_Username=name"));
+        assertThat(request.toString(), is("F_Username=name&ED_Username=true"));
     }
 
     @Test
-    public void test() {
+    public void given_multiplecolumn_with_filter_expect_keyvalue() {
         RequestBuilder rBuilder = new RequestBuilder();
-        Request request = rBuilder
+        RequestBuilder.Request request = rBuilder
                 .column("Username")
                 .name("Username")
                 .filter("name").build()
@@ -44,7 +41,7 @@ public class RequestTest {
                 .name("Department")
                 .filter("department").build()
                 .build();
-        assertThat(request.toString(), is("F_Username=name&F_Business=business&F_Cust#=cust#&F_Type=type&F_Name=name&F_Department=department"));
+        assertThat(request.toString(), is("F_Username=name&ED_Username=true&F_Business=business&ED_Business=true&F_Cust#=cust#&ED_Cust#=true&F_Type=type&ED_Type=true&F_Name=name&ED_Name=true&F_Department=department&ED_Department=true"));
     }
 
 }
