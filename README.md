@@ -1,4 +1,4 @@
-# Example Client for PAI Reports Report API
+# PAI Reports Example Client for Report API
 
 This repository holds example code demonstrating how to interact with PAI's paireports.com. PAI Reports has several ways of interfacing with its data. One of the easiest ways to retrieve data is through the Report API. This API is designed around a standard HTTP request process and will allow access to any data that a user can access through the screens provided within PAI Reports. Using this API, you can develop applications that utilize the huge amount of data that PAI Reports collects and stores to build new and exciting things. PAI Report's Report API also provides mechanisms for filtering, sorting, and adjusting the number of columns produced in response to your requests to make it easier for your applications to work.
 
