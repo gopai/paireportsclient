@@ -16,7 +16,7 @@ public class PAIReportDownloader {
         int GUIDInd = -1;
         int pathInd = -1;
 
-        for (int i = 0; i < args.length; i++){
+        for (int i = 0; i + 1 < args.length; i++)
             if (args[i].equalsIgnoreCase("-u"))
                 userInd = i + 1;
             else if (args[i].equalsIgnoreCase("-p"))
@@ -25,9 +25,8 @@ public class PAIReportDownloader {
                 GUIDInd = i + 1;
             else if (args[i].equalsIgnoreCase("-path"))
                 pathInd = i + 1;
-        }
 
-        if (userInd< 0 || passInd < 0 || GUIDInd < 0 || pathInd < 0){
+        if (userInd < 0 || passInd < 0 || GUIDInd < 0 || pathInd < 0) {
             System.out.println("The Downloader can only accept arguments of the form -u User -p Password -guid ReportGUID -path DesiredDirectory");
             System.out.println("Please try again.");
             return;
@@ -35,13 +34,13 @@ public class PAIReportDownloader {
 
         PAIClient client = new PAIClient();
 
-        if (!client.connect(args[userInd], args[passInd])){
+        if (!client.connect(args[userInd], args[passInd])) {
             System.out.println("Could not connect with provided credentials. Please double check and try again.");
             return;
         }
 
         AvailableReportConfig reportConfig = GetSelectedGUID(client, args[GUIDInd]);
-        if(reportConfig == null){
+        if (reportConfig == null) {
             System.out.println("Either could not find GUID or provided User does not have access. Please try again.");
             return;
         }
