@@ -1,8 +1,9 @@
-package com.gopai;
+package com.gopai.data;
 
-public class AvailableReportConfig {
+public class ReportIdentifier {
     private String ReportGUID;
     private String ExternalName;
+    private String Name;
 
     public String getReportGUID() {
         return ReportGUID;
@@ -20,12 +21,20 @@ public class AvailableReportConfig {
         ExternalName = externalName;
     }
 
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
     @Override
     public String toString() {
-        return "ReportConfig{" +
-                "reportGuid='" + ReportGUID + '\'' +
-                "      " +
-                "ExternalName='" + ExternalName + '\'' +
+        return "AvailableReportConfig{" +
+                "ReportGUID='" + ReportGUID + '\'' +
+                ", ExternalName='" + ExternalName + '\'' +
+                ", Name='" + Name + '\'' +
                 '}';
     }
 }

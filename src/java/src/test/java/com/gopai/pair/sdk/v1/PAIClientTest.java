@@ -1,4 +1,4 @@
-package com.gopai;
+package com.gopai.pair.sdk.v1;
 
 import org.junit.Test;
 
@@ -7,13 +7,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
 public class PAIClientTest {
-    @Test
-    public void name() throws IOException {
-        PAIClient paiClient = new PAIClient();
-        paiClient.connect("a", "b");
-        System.out.println(paiClient.retrieveReportConfig("43377A74-92B8-E911-80CF-001B213793BD"));
-    }
 
     @Test
     public void queryTest() throws IOException {
@@ -26,5 +23,18 @@ public class PAIClientTest {
         while ((consoleInput = input.readLine()) != null)
             System.out.println(consoleInput);
         input.close();
+    }
+
+    @Test
+    public void noCredentialsIsConnectedTest() {
+        PAIClient paiClient = new PAIClient();
+        assertThat(paiClient.isConnected(), is(false));
+    }
+
+    @Test
+    public void badCredentialsIsConnectedTest() throws IOException {
+        PAIClient paiClient = new PAIClient();
+        paiClient.connect("BadUserName", "BadPassword");
+        assertThat(paiClient.isConnected(), is(false));
     }
 }

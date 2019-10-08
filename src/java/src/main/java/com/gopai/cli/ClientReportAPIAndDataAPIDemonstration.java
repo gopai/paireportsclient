@@ -1,6 +1,9 @@
-package com.gopai;
+package com.gopai.cli;
 
 import com.google.gson.Gson;
+import com.gopai.pair.sdk.v1.PAIClient;
+import com.gopai.pair.sdk.v1.ReportRequest;
+import com.gopai.data.ReportIdentifier;
 
 import java.io.*;
 
@@ -15,7 +18,7 @@ public class ClientReportAPIAndDataAPIDemonstration {
     }
 
     private static void DemonstrateReportAPI(PAIClient client) throws IOException {
-        InputStream stream = client.retrieveReportUsingBuilder(RequestBuilder.report("GetNewUserReport").column("City").filter("Billings").visible(false).build());
+        InputStream stream = client.retrieveReportUsingBuilder(ReportRequest.report("GetNewUserReport").column("City").setFilter("Billings").setVisible(false).build());
         BufferedReader input = new BufferedReader(new InputStreamReader(stream));
         String consoleInput;
 
@@ -48,9 +51,9 @@ public class ClientReportAPIAndDataAPIDemonstration {
 
         input.close();
 
-        AvailableReportConfig[] configs = new Gson().fromJson(text.toString(), AvailableReportConfig[].class);
+        ReportIdentifier[] configs = new Gson().fromJson(text.toString(), ReportIdentifier[].class);
 
-        for (AvailableReportConfig config : configs) {
+        for (ReportIdentifier config : configs) {
             System.out.println(config);
         }
     }
