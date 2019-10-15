@@ -12,8 +12,8 @@ public class StreamUtil {
     /**
      * Copy from an InputStream to an OutputStream
      *
-     * @param in
-     * @param out
+     * @param in The input stream.
+     * @param out The output stream.
      */
     public static void copy(InputStream in, OutputStream out) {
         try {

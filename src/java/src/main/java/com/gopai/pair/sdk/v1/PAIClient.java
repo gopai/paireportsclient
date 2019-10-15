@@ -27,10 +27,11 @@ public class PAIClient implements AutoCloseable {
     /**
      * The start point for the server session.
      * Both username and password must be for a valid and active User.
-     * @param username
-     * @param password
+     *
+     * @param username A valid username.
+     * @param password A valid password for given username.
      * @return boolean value indicating whether the connection was successful or not.
-     * @throws IOException
+     * @throws IOException From the Response.
      */
     public boolean connect(String username, String password) throws IOException {
         this.username = username;
@@ -49,9 +50,10 @@ public class PAIClient implements AutoCloseable {
 
     /**
      * Retrieves a report as a CSV file using the {@link ReportRequest} to apply filters to report.
+     *
      * @param reportRequest {@link ReportRequest}
      * @return InputStream of the retrieved CSV file.
-     * @throws IOException
+     * @throws IOException From the Response.
      */
     public InputStream retrieveReportUsingBuilder(ReportRequest reportRequest) throws IOException {
         RequestBuilder r = builder("Report.event", "POST")
@@ -74,9 +76,10 @@ public class PAIClient implements AutoCloseable {
 
     /**
      * Retrieves a report as a CSV file using the report GUID.
-     * @param guid
+     *
+     * @param guid The GUID value of the desired report.
      * @return InputStream of the retrieved CSV file.
-     * @throws IOException
+     * @throws IOException From the Response.
      */
     public InputStream retrieveReportUsingGUID(String guid) throws IOException {
         RequestBuilder r = builder("Report.event", "POST")
@@ -94,9 +97,10 @@ public class PAIClient implements AutoCloseable {
 
     /**
      * Retrieves the {@link ReportConfig} for the given report GUID.
-     * @param GUID
+     *
+     * @param GUID the GUID value of the desired report.
      * @return {@link ReportConfig}
-     * @throws IOException
+     * @throws IOException From the Response.
      */
     public ReportConfig retrieveReportConfig(String GUID) throws IOException {
         String response = httpclient.execute(builder("ReportConfigManagement.event", "FIND_CONFIG")
@@ -115,9 +119,10 @@ public class PAIClient implements AutoCloseable {
 
     /**
      * Runs a query against the database and returns the results as an InputStream.
-     * @param query
+     *
+     * @param query The query that will be executed.
      * @return InputStream of the retrieved query results.
-     * @throws IOException
+     * @throws IOException From the Response.
      */
     public InputStream runQuery(String query) throws IOException {
         return httpclient.execute(builder("Query.event", "POST")
@@ -133,11 +138,12 @@ public class PAIClient implements AutoCloseable {
 
     /**
      * Runs a query against the database and returns results in the specified form.
-     * @param query
-     * @param expectedReturnClass
-     * @param <DesiredType>
-     * @return
-     * @throws IOException
+     *
+     * @param query The query to be executed.
+     * @param expectedReturnClass What you expect back from the query response.
+     * @param <DesiredType> The type you expect back from the query response.
+     * @return The query results formatted to the desired type.
+     * @throws IOException From the Response.
      */
     public <DesiredType> DesiredType runQuery(String query, Class<DesiredType> expectedReturnClass) throws IOException {
         return httpclient.execute(builder("Query.event", "POST")
@@ -155,9 +161,10 @@ public class PAIClient implements AutoCloseable {
 
     /**
      * This method sends a heartbeat.event request to the server to identify if the session is still live.
+     *
      * @return A boolean based on the results of the heartbeat.
      */
-    public boolean isConnected(){
+    public boolean isConnected() {
         try {
             return httpclient.execute(builder("heartbeat.event", "POST").build()).getStatusLine().getStatusCode() == 200;
         } catch (IOException e) {
@@ -167,7 +174,8 @@ public class PAIClient implements AutoCloseable {
 
     /**
      * Sends the DoLogout.event to the server to end your session.
-     * @throws IOException
+     *
+     * @throws IOException From the response.close.
      */
     public void logOut() throws IOException {
         CloseableHttpResponse execute = httpclient.execute(builder("DoLogout.event", "GET")
@@ -179,7 +187,8 @@ public class PAIClient implements AutoCloseable {
 
     /**
      * On close performs a logOut for your session.
-     * @throws Exception
+     *
+     * @throws Exception From the logOut.
      */
     @Override
     public void close() throws Exception {

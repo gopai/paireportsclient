@@ -3,6 +3,10 @@ plugins {
     id 'java'
 }
 
+if (file('./sign.gradle').exists()) {
+    apply from: './sign.gradle'
+}
+
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 

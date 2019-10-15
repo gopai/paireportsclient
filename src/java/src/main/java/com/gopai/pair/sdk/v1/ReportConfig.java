@@ -21,7 +21,7 @@ public class ReportConfig {
     /**
      * Returns the specified {@link Field}
      *
-     * @param fieldIndex
+     * @param fieldIndex Index of the Field to be selected.
      * @return {@link Field}
      */
     public Field getField(int fieldIndex) {
@@ -60,7 +60,7 @@ public class ReportConfig {
         }
 
         /**
-         * @param type
+         * @param type The string description of the field Type.
          */
         public void setType(String type) {
             this.type = type;
@@ -74,7 +74,7 @@ public class ReportConfig {
         }
 
         /**
-         * @param readonly
+         * @param readonly whether the field is Read only.
          */
         public void setReadonly(boolean readonly) {
             this.readonly = readonly;
@@ -88,7 +88,7 @@ public class ReportConfig {
         }
 
         /**
-         * @param name
+         * @param name Set the Name of the field.
          */
         public void setName(String name) {
             this.name = name;
@@ -104,7 +104,7 @@ public class ReportConfig {
         }
 
         /**
-         * @param data
+         * @param data {@link Data}
          */
         public void setData(Data data) {
             this.data = data;
@@ -134,14 +134,14 @@ public class ReportConfig {
             /**
              * returns the type of Data (Whether it is a selectable value, date, text filter, etc).
              *
-             * @return Type
+             * @return The Type
              */
             public String getType() {
                 return type;
             }
 
             /**
-             * @param type
+             * @param type The string Type
              */
             public void setType(String type) {
                 this.type = type;
@@ -157,7 +157,7 @@ public class ReportConfig {
             }
 
             /**
-             * @param forced
+             * @param forced whether the data is forced.
              */
             public void setForced(boolean forced) {
                 this.forced = forced;
@@ -166,7 +166,7 @@ public class ReportConfig {
             /**
              * Returns a specific {@link Value} based on index.
              *
-             * @param index
+             * @param index The index of the Value you want returned.
              * @return {@link Value}
              */
             public Value getValue(int index) {
@@ -183,7 +183,7 @@ public class ReportConfig {
             }
 
             /**
-             * @param values
+             * @param values the list of {@link Value}s.
              */
             public void setValues(List<Value> values) {
                 this.values = values;
@@ -217,7 +217,7 @@ public class ReportConfig {
             }
 
             /**
-             * @param label
+             * @param label the label of the value.
              */
             public void setLabel(String label) {
                 this.label = label;
@@ -233,7 +233,7 @@ public class ReportConfig {
             }
 
             /**
-             * @param key
+             * @param key the key of the value.
              */
             public void setKey(String key) {
                 this.key = key;

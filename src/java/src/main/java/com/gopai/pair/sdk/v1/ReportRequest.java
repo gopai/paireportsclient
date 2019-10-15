@@ -16,7 +16,7 @@ public class ReportRequest {
     /**
      * The static constructor for the {@link ReportRequest}.
      *
-     * @param reportName
+     * @param reportName The name of the report.
      * @return {@link ReportRequest}
      */
     public static ReportRequest report(String reportName) {
@@ -26,7 +26,7 @@ public class ReportRequest {
     }
 
     /**
-     * @param reportName
+     * @param reportName The name of the report.
      * @return {@link ReportRequest}
      */
     public ReportRequest setReportName(String reportName) {
@@ -42,7 +42,7 @@ public class ReportRequest {
     }
 
     /**
-     * @param reportGUID
+     * @param reportGUID the GUID of the report.
      * @return {@link ReportRequest}
      */
     public ReportRequest setReportGUID(String reportGUID) {
@@ -60,7 +60,7 @@ public class ReportRequest {
     /**
      * Start point for the column building process to add filters to Report Requests.
      *
-     * @param columnName
+     * @param columnName The name of the column.
      * @return {@link Column}
      */
     public Column column(String columnName) {
@@ -68,7 +68,7 @@ public class ReportRequest {
     }
 
     /**
-     * @param columns
+     * @param columns the list of {@link Column}
      * @return {@link ReportRequest}
      */
     public ReportRequest setColumns(List<Column> columns) {
@@ -120,14 +120,14 @@ public class ReportRequest {
         /**
          * The constructor and start point for the filter column building process.
          *
-         * @param builder
+         * @param builder The {@link ReportRequest} that the column will be assigned to.
          */
         public Column(ReportRequest builder) {
             this.rBuilder = builder;
         }
 
         /**
-         * @param name
+         * @param name The name of the Column.
          * @return {@link Column}
          */
         public Column setName(String name) {
@@ -143,7 +143,7 @@ public class ReportRequest {
         }
 
         /**
-         * @param filter
+         * @param filter The filter value of the Column.
          * @return {@link Column}
          */
         public Column setFilter(String filter) {
@@ -159,7 +159,7 @@ public class ReportRequest {
         }
 
         /**
-         * @param visibility
+         * @param visibility whether the Column should be visible.
          * @return {@link Column}
          */
         public Column setVisible(boolean visibility) {
