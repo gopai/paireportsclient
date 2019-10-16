@@ -93,7 +93,7 @@ def customizePom(pom) {
         def root = asNode()
 
         root.dependencies.removeAll { dep ->
-            dep.scope == "test"
+            dep.scope == "test" || dep.scope == "main"
         }
 
         root.children().last() + {
