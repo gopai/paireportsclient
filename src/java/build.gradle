@@ -1,6 +1,8 @@
 plugins {
     id 'com.github.johnrengelman.shadow' version '4.0.4'
     id 'java'
+    id 'signing'
+    id 'maven-publish'
 }
 
 if (file('./sign.gradle').exists()) {

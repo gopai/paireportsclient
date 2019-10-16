@@ -1,11 +1,5 @@
 group 'paireportsclient'
 
-plugins {
-    id 'com.github.johnrengelman.shadow' version '4.0.4'
-    id 'java'
-    id 'signing'
-    id 'maven-publish'
-}
 sourceCompatibility = 1.8
 
 repositories {
