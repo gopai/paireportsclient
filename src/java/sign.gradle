@@ -39,6 +39,7 @@ publishing {
             publication ->
                 project.shadow.component(publication)
                 customizePom(pom)
+
                 groupId 'com.gopai'
                 artifactId 'paireportsclient'
                 version '1.0.1'
@@ -91,10 +92,10 @@ publishing {
 def customizePom(pom) {
     pom.withXml {
         def root = asNode()
-
-        root.removeAll { dep ->
-            dep.name == "dependencies"
+        root.'dependencies'.findAll() .each() {
+            it.parent().remove(it)
         }
+
 
         root.children().last() + {
             resolveStrategy = Closure.DELEGATE_FIRST
