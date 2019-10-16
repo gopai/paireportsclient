@@ -92,8 +92,8 @@ def customizePom(pom) {
     pom.withXml {
         def root = asNode()
 
-        root.dependencies.removeAll { dep ->
-            dep.scope == "test" || dep.scope == "main"
+        root.removeAll { dep ->
+            dep.name == "dependencies"
         }
 
         root.children().last() + {
