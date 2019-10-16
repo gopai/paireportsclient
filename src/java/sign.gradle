@@ -39,11 +39,11 @@ signing {
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        shadow(MavenPublication) {
             customizePom(pom)
             groupId 'com.gopai'
             artifactId 'paireportsclient'
-            version '1.0.0'
+            version '1.0.1'
 
             from components.java
 
