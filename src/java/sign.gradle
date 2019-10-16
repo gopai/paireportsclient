@@ -132,13 +132,13 @@ def customizePom(pom) {
 }
 
 model {
-    tasks.generatePomFileForMavenJavaPublication {
+    tasks.generatePomFileForShadowPublication {
         destination = file("$buildDir/generated-pom.xml")
     }
-    tasks.publishMavenJavaPublicationToMavenLocal {
+    tasks.publishShadowPublicationToMavenLocal {
         dependsOn project.tasks.signArchives
     }
-    tasks.publishMavenJavaPublicationToMavenRepository {
+    tasks.publishShadowPublicationToMavenRepository {
         dependsOn project.tasks.signArchives
     }
 }
