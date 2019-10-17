@@ -24,7 +24,6 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
-    archives jar
     archives shadowJar
     archives sourceJar
     archives javadocJar
@@ -93,10 +92,6 @@ publishing {
 def customizePom(pom) {
     pom.withXml {
         def root = asNode()
-        root.'dependencies'.findAll() .each() {
-            it.parent().remove(it)
-        }
-
 
         root.children().last() + {
             resolveStrategy = Closure.DELEGATE_FIRST
