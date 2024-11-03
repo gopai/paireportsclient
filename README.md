@@ -47,7 +47,7 @@ We can take this a step further by adding visibility to columns. Visibility simp
 
 `E_[Column Name]=[true|false]`
 
-`E_` indicates to the Report API that the key indicates which column will have its visibility adjusted. The visibility will be adjusted by the value. The value can either be `true` or `false`. False indicates that the column should not be included and true indicates that the column should be shown. Filters will still apply even if the column is not shown.
+`E_` indicates to the Report API that the key indicates which column will have its visibility adjusted. The value will adjust the visibility. The value can either be `true` or `false`. False indicates that the column should not be included and true indicates that the column should be shown. Filters will still apply even if the column is not shown.
 
 The following example will filter the report by narrowing to only usernames that contain the text 'bill' and will not include the column Username in the final result.
 
@@ -92,3 +92,7 @@ The login event ```Login.event``` requires `Username` and `Password`. These two 
 <p>Since we use cookies, once a login is performed and authenticated, a session token is provided back to the client from the server. Our API stores this session token in a variable and will be used to identify a specific login occurrence. A representation of this client-server communication is below.</p> 
 
 ![alt text](https://github.com/gopai/paireportsclient/blob/master/client-server%20diagram.png)
+
+## Tutorials and PAI Reports Configurations
+[PAI Reports - Office Hours](https://www.youtube.com/playlist?list=PLoYgeTUpAy60CLAliKEIZrNYZa-KIA1bm)
+
